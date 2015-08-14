@@ -4,10 +4,11 @@ using System.Collections;
 public class EscapeHandler : MonoBehaviour {
 
     public GameObject pausePanel;
-    public bool isPaused;
+    private GameMaster gm;
 
 	// Use this for initialization
 	void Start () {
+        this.gm = FindObjectOfType<GameMaster>();
         this.pausePanel.SetActive(false);
 	}
 
@@ -33,7 +34,7 @@ public class EscapeHandler : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPaused){
+            if (!this.gm.isPaused){
                 Pause();
             }
             else

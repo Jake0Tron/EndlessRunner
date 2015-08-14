@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
     public Collider2D col;
     public bool canDblJump;
 
+    private GameMaster gm;
+
     // Use this for initialization
     void Start()
     {
+        this.gm = FindObjectOfType<GameMaster>();
         this.rb = GetComponent<Rigidbody2D>();
         this.col = GetComponent<Collider2D>();
         this.moveSpeed = 5;
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             // constantly run
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            
+
             if (grounded)
             {
                 this.canDblJump = this.grounded;
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            this.rb.velocity = new Vector2(0f,0f);
+            this.rb.velocity = new Vector2(0f, 0f);
         }
-    }
+        }
 }

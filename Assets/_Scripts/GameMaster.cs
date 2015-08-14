@@ -7,6 +7,7 @@ public class GameMaster : MonoBehaviour {
     public Text scoreText, speedText;
     public int playerScore;
     public PlayerController player;
+    public bool isPaused;
 
 	// Use this for initialization
 	void Start () {
