@@ -4,14 +4,6 @@ using System.Collections.Generic;
 
 public class EndlessGenerator : MonoBehaviour {
 
-    /// <summary>
-    /// Max number of platforms on screen at a time
-    /// </summary>
-    public GameObject[] platforms;
-
-    public bool gameOver;
-    public float waitTime;
-    public float spawnTime = 0.0f;
     public Transform spawnLoc;
 
     //distance between the platforms vertically

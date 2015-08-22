@@ -1,24 +1,31 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ObjectPooler : MonoBehaviour {
+public class ObjectPooler : MonoBehaviour
+{
 
-    public GameObject pooledObject;
-    public int amount;
+    public GameObject[] pooledObjects;
+    public int totalSinglePlatforms;
 
-    List<GameObject> pool;
+    public List<GameObject> pool;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         this.pool = new List<GameObject>();
-        // create only the required number of objects
-        for (int i = 0; i < amount; i++)
+        // create only the required number of platform objects[total]
+        for (int i = 0; i < pooledObjects.Length; i++)
         {
-            GameObject go = (GameObject)Instantiate(pooledObject);
-            go.SetActive(false);
-            pool.Add(go);
+            // create only the required number of each individual platform
+            for (int j = 0; j < totalSinglePlatforms; j++)
+            {
+                GameObject go = (GameObject)Instantiate(pooledObjects[i]);
+                go.SetActive(false);
+                pool.Add(go);
+
+            }
         }
-	}
+    }
     public GameObject GetPooledObject()
     {
         for (int i = 0; i < pool.Count; i++)
@@ -28,7 +35,8 @@ public class ObjectPooler : MonoBehaviour {
                 return pool[i];
             }
         }
-        GameObject go = (GameObject)Instantiate(pooledObject);
+        // make a random plat
+        GameObject go = (GameObject)Instantiate(pooledObjects[Random.Range(0, pool.Count)]);
         go.SetActive(false);
         pool.Add(go);
         return go;
