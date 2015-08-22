@@ -13,12 +13,9 @@ public class PlayerController : MonoBehaviour
     public Collider2D col;
     public bool canDblJump;
 
-    private GameMaster gm;
-
     // Use this for initialization
     void Start()
     {
-        this.gm = FindObjectOfType<GameMaster>();
         this.rb = GetComponent<Rigidbody2D>();
         this.col = GetComponent<Collider2D>();
         this.moveSpeed = 5;
